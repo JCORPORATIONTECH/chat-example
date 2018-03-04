@@ -7,8 +7,9 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
+// 소켓연결 구문이 겨우 이정도에서 끝
+io.on('connection', (socket) => {
+  socket.on('chat message', (msg) =>{
     io.emit('chat message', msg);
   });
 });
